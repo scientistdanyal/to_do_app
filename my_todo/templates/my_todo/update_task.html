@@ -4,13 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>update</title>
+    <style>
+        /* Add some basic styling to the form fields */
+        body{
+            background-color: #638CB8;
+        }
+        input::placeholder {
+          color: #d3d3d3;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Adjust the layout of the form */
+        .center-column{
+            width:600px;
+            margin: 20px auto;
+            padding:20px;
+            background-color: #fff;
+            border-radius: 3px;
+            box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Update</h1>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form}}
-        <input type="submit" name="update task">
-    </form>
+    <div class="center-column">
+       <h1>Update</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <!-- Apply the styles to the form fields -->
+            <input type="text" name="title" value="{{ form.title.value }}" placeholder="Title">
+            <br>
+            <input type="checkbox" name="complete" {% if form.complete.value %}checked{% endif %}>
+            <label for="complete">Complete</label>
+            <br>
+            <input type="submit" name="update task">
+        </form>
+    </div>    
 </body>
 </html>
